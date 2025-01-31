@@ -12,6 +12,7 @@ class SparkBasicTest extends AnyFunSuite with LazyLogging {
       .builder
       .appName("Simple Application")
       .config("spark.master", "local")
+      //      .master("spark://localhost:7077")
       .getOrCreate()
     val logData = spark.read.textFile(logFile).cache()
     val numAs = logData.filter(line => line.contains("a")).count()
